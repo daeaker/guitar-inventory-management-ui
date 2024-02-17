@@ -20,7 +20,64 @@
         </span>
 
     </p>
-    
+
+    <label style="font-weight: bold; font-size: large;">Serial Number:</label>
+    <input style="border-width: thin" id="serialNumber"/>
+    <br />
+    <br />
+    <label style="font-weight: bold; font-size: large;">Price:</label>
+    <input style="border-width: thin" id="price"/>
+    <br />
+    <br />
+    <label style="font-weight: bold; font-size: large;">Builder:</label>
+    <input style="border-width: thin" id="builder"/>
+    <br />
+    <br />
+    <label style="font-weight: bold; font-size: large;">Model:</label>
+    <input style="border-width: thin" id="model"/>
+    <br />
+    <br />
+    <label style="font-weight: bold; font-size: large;">Type:</label>
+    <input style="border-width: thin;" id="type"/>
+    <br />
+    <br />
+    <label style="font-weight: bold; font-size: large;">Back Wood:</label>
+    <input style="border-width: thin; " id="backWood"/>
+    <br />
+    <br />
+    <label style="font-weight: bold; font-size: large;">Top Wood:</label>
+    <input style="border-width: thin;" id="topWood"/>
+    <br />
+    <br />
+
+    <button onclick="addTheGuitar()">Add the guitar</button>
+
+    <script>
+        function addTheGuitar() {
+           let serialNode = document.getElementById("serialNumber");
+           let gserialNumber = serialNode.value;
+           let priceNode = document.getElementById("price");
+           let gprice = priceNode.value;
+           let builderNode = document.getElementById("builder");
+           let gbuilder = builderNode.value;
+           let modelNode = document.getElementById("model");
+           let gmodel = modelNode.value;
+           let typeNode = document.getElementById("type");
+           let gtype = typeNode.value;
+           let backWoodNode = document.getElementById("backWood");
+           let gbackWood = backWoodNode.value;
+           let topWoodNode = document.getElementById("topWood");
+           let gtopWood = topWoodNode.value;
+
+           let guitar = {serialNumber:gserialNumber, price:gprice, builder:gbuilder, model:gmodel, type:gtype, backWood:gbackWood, topWood:gtopWood};
+           alert("You entered: " + JSON.stringify(guitar));
+           
+           
+           
+           
+           alert("You entered: " + JSON.stringify(guitar));
+        }
+    </script>
 
 </body>
 </html>

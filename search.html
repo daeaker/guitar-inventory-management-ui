@@ -20,6 +20,141 @@
         </span>
 
     </p>
+
+    <br />
+    <br />
+
+
+    <label style="font-weight: bold; font-size: large;">Builder:</label>
+    <input style="border-width: thin" id="builder"/>
+    <br />
+    <br />
+    <label style="font-weight: bold; font-size: large;">Model:</label>
+    <input style="border-width: thin" id="model"/>
+    <br />
+    <br />
+    <label style="font-weight: bold; font-size: large;">Type:</label>
+    <input style="border-width: thin;" id="type"/>
+    <br />
+    <br />
+    <label style="font-weight: bold; font-size: large;">Back Wood:</label>
+    <input style="border-width: thin; " id="backWood"/>
+    <br />
+    <br />
+    <label style="font-weight: bold; font-size: large;">Top Wood:</label>
+    <input style="border-width: thin;" id="topWood"/>
+    <br />
+    <br />
+
+
+    <button onclick="search()">Search</button>
+    <br />
+    <br />
+
+    <table>
+        <thead>
+            <tr>
+                <th>Serial Number</th>
+                <th>Builder</th>
+                <th>Model</th>
+                <th>Type</th>
+                <th>Back Wood</th>
+                <th>Top Wood</th>
+                <th>Price</th>
+            </tr>
+        </thead>
+        <tbody id="searchResult">
+        </tbody>
+    </table>
+
+
+    <script>
+
+        let guitar1 = {serialNumber:"serialNumber1", price:1, builder:"builder1", model:"model1", type:"type1", backWood:"backWood1", topWood:"topWood1"};
+        let guitar2 = {serialNumber:"serialNumber2", price:2, builder:"builder2", model:"model2", type:"type2", backWood:"backWood2", topWood:"topWood2"};
+        let guitar3 = {serialNumber:"serialNumber3", price:3, builder:"builder3", model:"model3", type:"type3", backWood:"backWood3", topWood:"topWood3"};
+        let guitar22 = {serialNumber:"serialNumber22", price:2, builder:"builder2", model:"model2", type:"type2", backWood:"backWood2", topWood:"topWood2"};
+        let guitar222 = {serialNumber:"serialNumber222", price:2, builder:"builder2", model:"model2", type:"type2", backWood:"backWood2", topWood:"topWood2"};
+
+
+        let guitars = [guitar1, guitar2, guitar3, guitar22, guitar222];
+
+        function search() {
+
+            let gbuilder = document.getElementById("builder").value;
+            let gmodel = document.getElementById("model").value;
+            let gtype = document.getElementById("type").value;
+            let gbackWood = document.getElementById("backWood").value;
+            let gtopWood = document.getElementById("topWood").value;
+
+            let table = document.getElementById("searchResult");
+            table.innerHTML = "";
+
+
+            for (let guitar of guitars) {
+                if (!gbuilder || gbuilder.toUpperCase() == guitar.builder.toUpperCase()) {
+                    if (!gmodel || gmodel.toUpperCase() == guitar.model.toUpperCase()) {
+                        if (!gtype || gtype.toUpperCase() == guitar.type.toUpperCase()) {
+                            if (!gbackWood || gbackWood.toUpperCase() == guitar.backWood.toUpperCase()) {
+                                if (!gtopWood || gtopWood.toUpperCase() == guitar.topWood.toUpperCase()) {
+
+                                    let row = document.createElement("tr");
+                                    let cell1 = document.createElement("td");
+                                    let cell2 = document.createElement("td");
+                                    let cell3 = document.createElement("td");
+                                    let cell4 = document.createElement("td");
+                                    let cell5 = document.createElement("td");
+                                    let cell6 = document.createElement("td");
+                                    let cell7 = document.createElement("td");
+
+                                    let serialNumber = document.createTextNode(guitar.serialNumber);
+                                    let builder = document.createTextNode(guitar.builder);
+                                    let model = document.createTextNode(guitar.model);
+                                    let type = document.createTextNode(guitar.type);
+                                    let backWood = document.createTextNode(guitar.backWood);
+                                    let topWood = document.createTextNode(guitar.topWood);
+                                    let price = document.createTextNode(guitar.price);
+
+                                    cell1.appendChild(serialNumber);
+                                    cell2.appendChild(builder);
+                                    cell3.appendChild(model);
+                                    cell4.appendChild(type);
+                                    cell5.appendChild(backWood);
+                                    cell6.appendChild(topWood);
+                                    cell7.appendChild(price);
+
+                                    row.appendChild(cell1);
+                                    row.appendChild(cell2);
+                                    row.appendChild(cell3);
+                                    row.appendChild(cell4);
+                                    row.appendChild(cell5);
+                                    row.appendChild(cell6);
+                                    row.appendChild(cell7);
+
+                                    table.appendChild(row);
+
+
+
+
+
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+
+
+
+        }
+
+
+
+
+
+    </script>
+
+
     
 
 </body>
