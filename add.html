@@ -53,7 +53,10 @@
     <button onclick="addTheGuitar()">Add the guitar</button>
 
     <script>
-        function addTheGuitar() {
+
+        let host = "http://localhost:8080";
+
+        async function addTheGuitar() {
            let serialNode = document.getElementById("serialNumber");
            let gserialNumber = serialNode.value;
            let priceNode = document.getElementById("price");
@@ -70,12 +73,63 @@
            let gtopWood = topWoodNode.value;
 
            let guitar = {serialNumber:gserialNumber, price:gprice, builder:gbuilder, model:gmodel, type:gtype, backWood:gbackWood, topWood:gtopWood};
+           
+           let add = true;
+
            alert("You entered: " + JSON.stringify(guitar));
+
+           if (gserialNumber == "") {
+            alert("Please enter a serial number")
+            add = false;
+           }
+           if (gprice == "") {
+            alert("Please enter a price")
+            add = false;
+           }
+           if (gbuilder == "") {
+            alert("Please enter a builder")
+            add = false;
+           }
+           if (gmodel == "") {
+            alert("Please enter a model")
+            add = false;
+           }
+           if (gtype == "") {
+            alert("Please enter a type")
+            add = false;
+           }
+           if (gbackWood == "") {
+            alert("Please enter a back wood")
+            add = false;
+           }
+           if (gtopWood == "") {
+            alert("Please enter a top wood")
+            add = false;
+           }
+
+           if (add) {
+
+            let request = {
+                method: "POST",
+                headers: {
+                "Content-Type": "application/json"
+                },
+                body: JSON.stringify(guitar)
+            };
+
+            let response = await fetch(host + "/add", request);
+
+            if (response.status == 200) {
+                message = "The Guitar has been added!";
+            }
+            else {
+                message = "The add attempt failed.";
+            }
+
+            alert(message);
+           }
            
            
-           
-           
-           alert("You entered: " + JSON.stringify(guitar));
         }
     </script>
 
