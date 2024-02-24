@@ -120,11 +120,13 @@
             let response = await fetch(host + "/add", request);
 
             if (response.status == 200) {
-                message = "The Guitar has been added!";
+                message = "The guitar was added to the system!";
             }
             else {
-                message = "The add attempt failed.";
+                message = "Something went wrong. Please try again or contact the customer support team.";
             }
+
+            console.log(response);
 
             alert(message);
            }
